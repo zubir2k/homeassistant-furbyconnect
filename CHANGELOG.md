@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.7
+
+### Fixed
+- hassfest failed on the Mood state translations. Enum states are now lowercase keys, e.g. `excited`, `app_main`, `hangout_mode`.
+
+### Added
+- Translated states for Personality and Mode (English and Bahasa Melayu).
+
+### Changed
+- Mood, Personality and Mode now report lowercase states. Update automations that compared against `Excited`, `Sleeping` and so on. The displayed names are unchanged.
+
 ## v0.1.6
 
 First public release. Requires Home Assistant 2026.3 or newer.

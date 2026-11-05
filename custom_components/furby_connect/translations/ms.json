@@ -32,17 +32,38 @@
       "mood": {
         "name": "Emosi",
         "state": {
-          "Excited": "Teruja",
-          "Displeased": "Tidak puas hati",
-          "Tired": "Letih",
-          "Neutral": "Biasa"
+          "excited": "Teruja",
+          "displeased": "Tidak puas hati",
+          "tired": "Letih",
+          "neutral": "Biasa"
         }
       },
       "personality": {
-        "name": "Personaliti"
+        "name": "Personaliti",
+        "state": {
+          "base": "Asas",
+          "dj": "DJ",
+          "princess": "Puteri",
+          "ninja": "Ninja",
+          "pirate": "Lanun",
+          "cat": "Kucing",
+          "popstar": "Bintang pop"
+        }
       },
       "mode": {
-        "name": "Mod"
+        "name": "Mod",
+        "state": {
+          "none": "Tiada",
+          "sleeping": "Tidur",
+          "wakeup": "Sedang bangun",
+          "hangout_mode": "Lepak",
+          "f2f_master": "Furby-ke-Furby (ketua)",
+          "f2f_slave": "Furby-ke-Furby (pengikut)",
+          "interactive": "Interaktif",
+          "making_music": "Bermain muzik",
+          "app_main": "Aplikasi bersambung",
+          "app_naming": "Menamakan"
+        }
       },
       "states": {
         "name": "Keadaan aktif"

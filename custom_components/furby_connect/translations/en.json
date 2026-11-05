@@ -32,17 +32,38 @@
       "mood": {
         "name": "Mood",
         "state": {
-          "Excited": "Excited",
-          "Displeased": "Displeased",
-          "Tired": "Tired",
-          "Neutral": "Neutral"
+          "excited": "Excited",
+          "displeased": "Displeased",
+          "tired": "Tired",
+          "neutral": "Neutral"
         }
       },
       "personality": {
-        "name": "Personality"
+        "name": "Personality",
+        "state": {
+          "base": "Base",
+          "dj": "DJ",
+          "princess": "Princess",
+          "ninja": "Ninja",
+          "pirate": "Pirate",
+          "cat": "Cat",
+          "popstar": "Popstar"
+        }
       },
       "mode": {
-        "name": "Mode"
+        "name": "Mode",
+        "state": {
+          "none": "None",
+          "sleeping": "Sleeping",
+          "wakeup": "Waking up",
+          "hangout_mode": "Hangout",
+          "f2f_master": "Furby-to-Furby (leader)",
+          "f2f_slave": "Furby-to-Furby (follower)",
+          "interactive": "Interactive",
+          "making_music": "Making music",
+          "app_main": "App connected",
+          "app_naming": "Naming"
+        }
       },
       "states": {
         "name": "Active states"

@@ -1,6 +1,7 @@
 """Sensors."""
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -17,18 +18,28 @@ class FurbySensorDesc(SensorEntityDescription):
     value: Callable
 
 
+def _slug(name) -> str | None:
+    """'HangoutMode' -> 'hangout_mode', so enum states are valid translation keys."""
+    if not isinstance(name, str):
+        return None
+    return re.sub(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z0-9])(?=[A-Z][a-z])", "_", name).lower()
+
+
+def _enum(key, names, value):
+    options = [_slug(n) for n in names]
+    return FurbySensorDesc(key=key, device_class=SensorDeviceClass.ENUM, options=options,
+        value=lambda c, im: v if (v := _slug(value(c, im))) in options else None)
+
+
 def _pct(attr):
     return FurbySensorDesc(key=attr, native_unit_of_measurement=PERCENTAGE,
         state_class=SensorStateClass.MEASUREMENT, value=lambda c, im: getattr(im, attr) if im else None)
 
 
 SENSORS = [
-    FurbySensorDesc(key="mood", device_class=SensorDeviceClass.ENUM, options=p.MOODS,
-                    value=lambda c, im: im.mood if im else None),
-    FurbySensorDesc(key="personality", device_class=SensorDeviceClass.ENUM, options=p.PERSONALITIES,
-                    value=lambda c, im: im.personality if im else None),
-    FurbySensorDesc(key="mode", device_class=SensorDeviceClass.ENUM, options=p.MODES,
-                    value=lambda c, im: (c.data.mode if c.present else "Sleeping") if c.data else None),
+    _enum("mood", p.MOODS, lambda c, im: im.mood if im else None),
+    _enum("personality", p.PERSONALITIES, lambda c, im: im.personality if im else None),
+    _enum("mode", p.MODES, lambda c, im: (c.data.mode if c.present else "Sleeping") if c.data else None),
     FurbySensorDesc(key="states", value=lambda c, im: ", ".join(im.states) or "None" if im else None),
     _pct("fullness"), _pct("wellness"), _pct("excited"), _pct("tired"), _pct("displeased"),
     FurbySensorDesc(key="battery", device_class=SensorDeviceClass.BATTERY, native_unit_of_measurement=PERCENTAGE,
