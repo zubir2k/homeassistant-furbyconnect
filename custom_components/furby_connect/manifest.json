@@ -1,0 +1,23 @@
+{
+  "domain": "furby_connect",
+  "name": "Furby Connect",
+  "bluetooth": [
+    {
+      "local_name": "Furby",
+      "connectable": true
+    }
+  ],
+  "codeowners": [
+    "@zubir2k"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "bluetooth_adapters"
+  ],
+  "documentation": "https://github.com/zubir2k/homeassistant-furbyconnect",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/zubir2k/homeassistant-furbyconnect/issues",
+  "requirements": [],
+  "version": "0.1.6"
+}

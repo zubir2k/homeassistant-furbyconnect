@@ -1,0 +1,12 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "awake": {
+        "default": "mdi:sleep",
+        "state": {
+          "on": "mdi:emoticon-happy-outline"
+        }
+      }
+    }
+  }
+}

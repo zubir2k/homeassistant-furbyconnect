@@ -1,0 +1,115 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "confirm": {
+        "description": "Set up {name}? Wake the Furby first so it is advertising."
+      },
+      "user": {
+        "title": "Pick your Furby",
+        "data": {
+          "address": "Furby"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This Furby is already set up.",
+      "no_devices_found": "No awake Furby found. Wake it (tickle or pull its tail) and try again."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling",
+        "data": {
+          "poll_minutes": "Check status every (minutes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "mood": {
+        "name": "Mood",
+        "state": {
+          "Excited": "Excited",
+          "Displeased": "Displeased",
+          "Tired": "Tired",
+          "Neutral": "Neutral"
+        }
+      },
+      "personality": {
+        "name": "Personality"
+      },
+      "mode": {
+        "name": "Mode"
+      },
+      "states": {
+        "name": "Active states"
+      },
+      "fullness": {
+        "name": "Fullness"
+      },
+      "wellness": {
+        "name": "Wellness"
+      },
+      "excited": {
+        "name": "Excitement"
+      },
+      "tired": {
+        "name": "Tiredness"
+      },
+      "displeased": {
+        "name": "Displeasure"
+      },
+      "rssi": {
+        "name": "Signal strength"
+      },
+      "last_update": {
+        "name": "Last status"
+      },
+      "advert": {
+        "name": "Advertisement"
+      },
+      "battery": {
+        "name": "Battery"
+      }
+    },
+    "binary_sensor": {
+      "awake": {
+        "name": "Awake",
+        "state": {
+          "on": "Awake",
+          "off": "Asleep"
+        }
+      },
+      "hungry": {
+        "name": "Hungry"
+      },
+      "sick": {
+        "name": "Sick"
+      },
+      "reachable": {
+        "name": "Reachable"
+      }
+    },
+    "light": {
+      "antenna": {
+        "name": "Antenna"
+      }
+    },
+    "number": {
+      "set_fullness": {
+        "name": "Feed (fullness)"
+      },
+      "set_wellness": {
+        "name": "Heal (wellness)"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Refresh status"
+      }
+    }
+  }
+}

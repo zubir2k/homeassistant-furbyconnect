@@ -1,0 +1,115 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "confirm": {
+        "description": "Tambah {name}? Bangunkan Furby dahulu supaya ia sedang membuat iklan Bluetooth."
+      },
+      "user": {
+        "title": "Pilih Furby anda",
+        "data": {
+          "address": "Furby"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Furby ini sudah ditambah.",
+      "no_devices_found": "Tiada Furby yang berjaga ditemui. Bangunkan ia (geletek atau tarik ekornya) dan cuba lagi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Semakan status",
+        "data": {
+          "poll_minutes": "Semak status setiap (minit)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "mood": {
+        "name": "Emosi",
+        "state": {
+          "Excited": "Teruja",
+          "Displeased": "Tidak puas hati",
+          "Tired": "Letih",
+          "Neutral": "Biasa"
+        }
+      },
+      "personality": {
+        "name": "Personaliti"
+      },
+      "mode": {
+        "name": "Mod"
+      },
+      "states": {
+        "name": "Keadaan aktif"
+      },
+      "fullness": {
+        "name": "Kenyang"
+      },
+      "wellness": {
+        "name": "Kesihatan"
+      },
+      "excited": {
+        "name": "Teruja"
+      },
+      "tired": {
+        "name": "Letih"
+      },
+      "displeased": {
+        "name": "Tidak puas hati"
+      },
+      "rssi": {
+        "name": "Kekuatan isyarat"
+      },
+      "last_update": {
+        "name": "Status terakhir"
+      },
+      "advert": {
+        "name": "Iklan Bluetooth"
+      },
+      "battery": {
+        "name": "Bateri"
+      }
+    },
+    "binary_sensor": {
+      "awake": {
+        "name": "Berjaga",
+        "state": {
+          "on": "Berjaga",
+          "off": "Tidur"
+        }
+      },
+      "hungry": {
+        "name": "Lapar"
+      },
+      "sick": {
+        "name": "Sakit"
+      },
+      "reachable": {
+        "name": "Boleh dihubungi"
+      }
+    },
+    "light": {
+      "antenna": {
+        "name": "Antena"
+      }
+    },
+    "number": {
+      "set_fullness": {
+        "name": "Beri makan (kenyang)"
+      },
+      "set_wellness": {
+        "name": "Rawat (kesihatan)"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Muat semula status"
+      }
+    }
+  }
+}
