@@ -98,11 +98,7 @@
     },
     "binary_sensor": {
       "awake": {
-        "name": "Berjaga",
-        "state": {
-          "on": "Berjaga",
-          "off": "Tidur"
-        }
+        "name": "Berjaga"
       },
       "hungry": {
         "name": "Lapar"
@@ -132,5 +128,14 @@
         "name": "Muat semula status"
       }
     }
+  },
+  "exceptions": {
+    "not_in_range": {
+      "message": "Furby tidak berada dalam julat Bluetooth."
+    },
+    "command_failed": {
+      "message": "Tidak dapat menghubungi Furby (sedang tidur?): {error}"
+    }
   }
 }
+

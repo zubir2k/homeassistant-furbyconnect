@@ -21,10 +21,20 @@ def test_im_here_decodes() -> None:
 
 def test_mode_and_messages() -> None:
     """0x23 is the mode reply, 0x20 a Furby message, anything else is kept raw."""
+    assert p.parse(b"") == {}
     assert p.parse(bytes([0x23, 0x08])) == {"type": "mode", "mode": "AppMain"}
     assert p.parse(bytes([0x23, 0x01]))["mode"] == "Sleeping"
     assert p.parse(bytes([0x20, 0x0E]))["message"] == "SequenceEnded"
     assert p.parse(bytes([0x99, 0x01])) == {"type": "0x99", "raw": "9901"}
+
+
+def test_im_here_18_bytes() -> None:
+    """An 18-byte 0x22 reply does not alias byte 16 into states."""
+    im = p.parse(IM_HERE[:18])
+    assert isinstance(im, p.ImHere)
+    assert im.wellness_enabled is True
+    assert im.states == []
+
 
 
 def test_commands() -> None:

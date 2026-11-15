@@ -1,11 +1,91 @@
 {
   "entity": {
+    "sensor": {
+      "mood": {
+        "default": "mdi:emoticon-outline",
+        "state": {
+          "excited": "mdi:emoticon-excited-outline",
+          "displeased": "mdi:emoticon-angry-outline",
+          "tired": "mdi:emoticon-sad-outline",
+          "neutral": "mdi:emoticon-neutral-outline"
+        }
+      },
+      "personality": {
+        "default": "mdi:drama-masks"
+      },
+      "mode": {
+        "default": "mdi:creation",
+        "state": {
+          "sleeping": "mdi:sleep",
+          "wakeup": "mdi:weather-sunset-up",
+          "making_music": "mdi:music-note",
+          "app_main": "mdi:cellphone-wireless"
+        }
+      },
+      "states": {
+        "default": "mdi:list-status"
+      },
+      "fullness": {
+        "default": "mdi:food-apple"
+      },
+      "wellness": {
+        "default": "mdi:heart-pulse"
+      },
+      "excited": {
+        "default": "mdi:star-face"
+      },
+      "tired": {
+        "default": "mdi:sleep"
+      },
+      "displeased": {
+        "default": "mdi:emoticon-frown-outline"
+      },
+      "rssi": {
+        "default": "mdi:bluetooth-audio"
+      },
+      "last_update": {
+        "default": "mdi:clock-check-outline"
+      },
+      "advert": {
+        "default": "mdi:bluetooth"
+      },
+      "battery": {
+        "default": "mdi:battery"
+      }
+    },
     "binary_sensor": {
       "awake": {
         "default": "mdi:sleep",
         "state": {
           "on": "mdi:emoticon-happy-outline"
         }
+      },
+      "hungry": {
+        "default": "mdi:silverware-fork-knife"
+      },
+      "sick": {
+        "default": "mdi:thermometer-alert"
+      },
+      "reachable": {
+        "default": "mdi:bluetooth-connect"
+      }
+    },
+    "light": {
+      "antenna": {
+        "default": "mdi:led-on"
+      }
+    },
+    "number": {
+      "set_fullness": {
+        "default": "mdi:food-drumstick"
+      },
+      "set_wellness": {
+        "default": "mdi:medical-bag"
+      }
+    },
+    "button": {
+      "refresh": {
+        "default": "mdi:refresh"
       }
     }
   }

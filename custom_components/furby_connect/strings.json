@@ -98,11 +98,7 @@
     },
     "binary_sensor": {
       "awake": {
-        "name": "Awake",
-        "state": {
-          "on": "Awake",
-          "off": "Asleep"
-        }
+        "name": "Awake"
       },
       "hungry": {
         "name": "Hungry"
@@ -132,5 +128,14 @@
         "name": "Refresh status"
       }
     }
+  },
+  "exceptions": {
+    "not_in_range": {
+      "message": "Furby is not in Bluetooth range."
+    },
+    "command_failed": {
+      "message": "Could not reach Furby (asleep?): {error}"
+    }
   }
 }
+
