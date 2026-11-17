@@ -4,7 +4,7 @@ from __future__ import annotations
 from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.const import PERCENTAGE
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import FurbyConfigEntry, protocol as p
 from .coordinator import FurbyCoordinator
@@ -21,7 +21,7 @@ METERS: dict[str, tuple[int, str]] = {
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: FurbyConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Furby Connect number entities."""
     coord = entry.runtime_data

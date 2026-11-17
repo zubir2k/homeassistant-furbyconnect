@@ -19,7 +19,7 @@ from homeassistant.const import (
     EntityCategory,
 )
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import FurbyConfigEntry, protocol as p
 from .coordinator import FurbyCoordinator
@@ -113,7 +113,7 @@ SENSORS: tuple[FurbySensorDesc, ...] = (
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: FurbyConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Furby Connect sensor entities."""
     coord = entry.runtime_data

@@ -5,7 +5,9 @@ from homeassistant.components import bluetooth
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS, Platform
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import config_validation as cv
 
+from .const import DOMAIN
 from .coordinator import FurbyCoordinator
 
 PLATFORMS = [
@@ -15,6 +17,7 @@ PLATFORMS = [
     Platform.NUMBER,
     Platform.BUTTON,
 ]
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 type FurbyConfigEntry = ConfigEntry[FurbyCoordinator]
 
 
