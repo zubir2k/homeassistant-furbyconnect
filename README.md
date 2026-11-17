@@ -1,7 +1,8 @@
 ![Furby Connect](custom_components/furby_connect/brand/logo@2x.png)
 ## Furby Connect for Home Assistant
 ![GitHub Repo stars](https://img.shields.io/github/stars/zubir2k/homeassistant-furbyconnect?style=social)
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/default)
+[![hacs_badge](https://img.shields.io/badge/HACS-Integration-41BDF5.svg)](https://github.com/hacs/integration)
 ![GitHub all releases](https://img.shields.io/badge/dynamic/json?color=41BDF5&logo=home-assistant&label=Download%20Count&suffix=%20installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.furby_connect.total)
 [![Buy](https://img.shields.io/badge/Belanja-Coffee-yellow.svg)](https://zubirco.de/buymecoffee)
 [![Github Releases](https://img.shields.io/github/v/release/zubir2k/homeassistant-furbyconnect)](https://github.com/zubir2k/homeassistant-furbyconnect/releases)
@@ -20,26 +21,27 @@ Bring your old **Furby Connect** (Hasbro, 2016) into Home Assistant. See its moo
 - English and Bahasa Melayu.
 
 ## Installation
-#### With HACS
+#### With Marketplace/HACS
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=zubir2k&repository=homeassistant-furbyconnect&category=integration)
 
 > [!Tip]
-> If the button doesn't work: HACS → ⋮ → **Custom repositories**, then add `https://github.com/zubir2k/homeassistant-furbyconnect` as **Integration**. Download **Furby Connect** and restart Home Assistant.
+> If you are unable to use the button above, manually search for Furby Connect in Marketplace/HACS.
 
 #### Manual
-1. Copy the `furby_connect` directory from `custom_components` in this repository into your Home Assistant's `custom_components` directory.
+1. Copy the `furby_connect` directory from `custom_components` in this repository and place inside your Home Assistant's `custom_components` directory.
 2. Restart Home Assistant.
 3. Follow the steps in the `Setup` section.
 
 > [!WARNING]
-> If you install manually, subscribe to this repository's releases to hear about new versions.
+> If installing manually, in order to be alerted about new releases, you will need to subscribe to releases from this repository.
 
 ## Setup
 [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=furby_connect)
 
 > [!Tip]
+> If you are unable to use the button above, follow the steps below:
 > 1. Wake your Furby (tickle it or pull its tail) so it advertises.
-> 2. Home Assistant usually discovers it on its own. If it doesn't, go to **Settings → Devices & services → Add integration** and search for `Furby Connect`.
+> 2. Home Assistant usually discovers it on its own. If it doesn't, go to **Settings → Devices & Services → Add Integration** and search for `Furby Connect`.
 > 3. Optional: **Configure** sets how often to check status while Furby is awake (default 10 minutes).
 
 You need a Bluetooth adapter Home Assistant can use, or an [ESPHome Bluetooth proxy](https://esphome.io/components/bluetooth_proxy.html) with `active: true`.
