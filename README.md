@@ -56,13 +56,10 @@ You need a Bluetooth adapter Home Assistant can use, or an [ESPHome Bluetooth pr
 | Antenna | light (RGB) | Shows the last colour set from HA; Furby can't report it |
 | Feed (fullness), Heal (wellness) | number | |
 | Refresh status | button | Polls now |
-| Signal strength, Advertisement, Last status, Reachable, Battery | diagnostic | |
+| Signal strength, Advertisement, Last status, Reachable | diagnostic | |
 
 ## How it works
 When Furby wakes, and every few minutes while it stays awake, the integration connects briefly, asks for status (`20 06`) and mode (`20 0c`), then disconnects. It never holds a connection open: that would keep Furby awake, drain its batteries and tie up a proxy slot.
-
-> [!Note]
-> **Battery:** Furby Connect has no standard Bluetooth battery service. The Battery diagnostic shows a raw power report when Furby sends one. There's no reliable percentage yet, so low-battery alerts aren't possible for now.
 
 ## Troubleshooting
 Turn on debug logging, reproduce the problem, and attach the `furby_connect` lines (and the integration's **Download diagnostics**) to an [issue](https://github.com/zubir2k/homeassistant-furbyconnect/issues).

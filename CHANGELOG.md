@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.10
+
+### Removed
+- Removed unconfirmed control channel power probe (`0x03` command), `power_raw` attribute, and diagnostic Battery sensor per HACS default review feedback.
+
 ## v0.1.7
 
 ### Fixed

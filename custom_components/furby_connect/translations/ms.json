@@ -91,9 +91,6 @@
       },
       "advert": {
         "name": "Iklan Bluetooth"
-      },
-      "battery": {
-        "name": "Bateri"
       }
     },
     "binary_sensor": {

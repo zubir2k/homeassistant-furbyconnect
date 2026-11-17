@@ -26,17 +26,12 @@ DIS = {
     "software": "00002a28-0000-1000-8000-00805f9b34fb",
     "manufacturer": "00002a29-0000-1000-8000-00805f9b34fb",
 }
-BATTERY_LEVEL = "00002a19-0000-1000-8000-00805f9b34fb"  # standard Battery Service, if the Furby exposes it
-
-
 @dataclass
 class FurbySnapshot:
     """Snapshot of a Furby Connect status poll."""
 
     im_here: p.ImHere | None
     mode: str | None
-    battery: int | None = None
-    power_raw: str | None = None
 
 
 class FurbyClient:
@@ -46,8 +41,6 @@ class FurbyClient:
         self._name = name
         self._lock = asyncio.Lock()
         self._logged_services = False
-        self.battery: int | None = None
-        self.power_raw: str | None = None
         self.device_info: dict[str, str] = {}
 
     async def _session(
@@ -55,7 +48,6 @@ class FurbyClient:
         device: BLEDevice,
         writes: list[bytes],
         want: set[int],
-        probe_power: bool = False,
     ) -> dict[int, bytes]:
         """Connect, subscribe, send writes, collect first reply per opcode in `want`."""
         got: dict[int, bytes] = {}
@@ -100,29 +92,6 @@ class FurbyClient:
                                     "%s read %s failed: %s", self._name, key, err
                                 )
                     _LOGGER.debug("%s device info: %s", self._name, self.device_info)
-                if probe_power:
-
-                    def _on_ctrl(_c, data: bytearray) -> None:
-                        pkt = bytes(data)
-                        _LOGGER.debug("%s ctrl <- %s", self._name, pkt.hex())
-                        if pkt[:1] == b"\x03":
-                            self.power_raw = pkt.hex()
-
-                    try:
-                        await client.start_notify(p.CTRL_NOTIFY, _on_ctrl)
-                        _LOGGER.debug("%s ctrl -> 03", self._name)
-                        await client.write_gatt_char(
-                            p.CTRL_WRITE, b"\x03", response=False
-                        )
-                    except Exception as err:  # noqa: BLE001
-                        _LOGGER.debug("%s power probe failed: %s", self._name, err)
-                batt = client.services.get_characteristic(BATTERY_LEVEL)
-                if batt is not None:
-                    try:
-                        self.battery = (await client.read_gatt_char(batt))[0]
-                        _LOGGER.debug("%s battery %s%%", self._name, self.battery)
-                    except Exception as err:  # noqa: BLE001
-                        _LOGGER.debug("%s battery read failed: %s", self._name, err)
                 await client.start_notify(p.DATA_NOTIFY, _on_notify)
                 for w in writes:
                     _LOGGER.debug("%s -> %s", self._name, w.hex())
@@ -145,7 +114,7 @@ class FurbyClient:
     async def poll(self, device: BLEDevice) -> FurbySnapshot:
         """Poll the Furby for ImHere status and current mode."""
         got = await self._session(
-            device, [p.ARE_YOU_THERE, p.GET_MODE], {0x22, 0x23}, probe_power=True
+            device, [p.ARE_YOU_THERE, p.GET_MODE], {0x22, 0x23}
         )
         parsed_im = p.parse(got[0x22]) if 0x22 in got else None
         im = parsed_im if isinstance(parsed_im, p.ImHere) else None
@@ -158,7 +127,7 @@ class FurbyClient:
         if im is None and mode is None:
             raise TimeoutError("Furby connected but sent no status")
         return FurbySnapshot(
-            im_here=im, mode=mode, battery=self.battery, power_raw=self.power_raw
+            im_here=im, mode=mode
         )
 
     async def send(self, device: BLEDevice, *packets: bytes) -> None:

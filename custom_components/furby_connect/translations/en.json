@@ -91,9 +91,6 @@
       },
       "advert": {
         "name": "Advertisement"
-      },
-      "battery": {
-        "name": "Battery"
       }
     },
     "binary_sensor": {

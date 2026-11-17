@@ -48,9 +48,6 @@
       },
       "advert": {
         "default": "mdi:bluetooth"
-      },
-      "battery": {
-        "default": "mdi:battery"
       }
     },
     "binary_sensor": {

@@ -44,7 +44,6 @@ async def async_get_config_entry_diagnostics(
             "status": {
                 "im_here": asdict(snap.im_here) if snap and snap.im_here else None,
                 "mode": snap.mode if snap else None,
-                "power_raw": snap.power_raw if snap else None,
             },
         },
         TO_REDACT,

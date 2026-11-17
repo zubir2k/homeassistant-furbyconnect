@@ -85,15 +85,6 @@ SENSORS: tuple[FurbySensorDesc, ...] = (
     _pct("tired"),
     _pct("displeased"),
     FurbySensorDesc(
-        key="battery",
-        device_class=SensorDeviceClass.BATTERY,
-        native_unit_of_measurement=PERCENTAGE,
-        state_class=SensorStateClass.MEASUREMENT,
-        entity_category=EntityCategory.DIAGNOSTIC,
-        entity_registry_enabled_default=False,
-        value=lambda c, im: c.data.battery if c.data else None,
-    ),
-    FurbySensorDesc(
         key="last_update",
         device_class=SensorDeviceClass.TIMESTAMP,
         entity_category=EntityCategory.DIAGNOSTIC,
@@ -155,13 +146,6 @@ class FurbySensor(FurbyEntity, SensorEntity):
     def __init__(self, coord: FurbyCoordinator, desc: FurbySensorDesc) -> None:
         super().__init__(coord, desc.key)
         self.entity_description = desc
-
-    @property
-    def extra_state_attributes(self) -> dict[str, Any] | None:
-        """Return raw power report on the battery sensor if available."""
-        if self.entity_description.key == "battery" and self.coordinator.data:
-            return {"power_report_raw": self.coordinator.data.power_raw}
-        return None
 
     @property
     def available(self) -> bool:
